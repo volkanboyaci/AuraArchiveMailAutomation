@@ -1,6 +1,6 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1115,830" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="56">
+    <scg:List x:TypeArguments="x:String" Capacity="31">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -196,7 +196,6 @@
                 </scg:List>
               </ui:FilterDataTable.SelectColumns>
             </ui:FilterDataTable>
-            <ui:WriteRange AddHeaders="True" DataTable="[outputDT]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Mails" StartingCell="A1" WorkbookPath="Mails.xlsx" />
           </Sequence>
           <FlowStep.Next>
             <FlowStep x:Name="__ReferenceID1">
@@ -206,7 +205,7 @@
                   <av:Size x:Key="ShapeSize">200,66</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap:VirtualizedContainerService.HintSize="468,1595" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Sequence DisplayName="Build and Replace DT" sap:VirtualizedContainerService.HintSize="510,2409" sap2010:WorkflowViewState.IdRef="Sequence_4">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="sd:DataTable" Name="buildedDT" />
                 </Sequence.Variables>
@@ -215,64 +214,84 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:BuildDataTable DataTable="[buildedDT]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="426,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;EmailAdress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;DisplayRole&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;LoS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-                <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[outputDT]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="426,1404" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                <ui:BuildDataTable DataTable="[buildedDT]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="468,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;EmailAdress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;DisplayRole&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;LoS&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+                <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[outputDT]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="468,2063" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                   <ui:ForEachRow.Body>
                     <ActivityAction x:TypeArguments="sd:DataRow">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,1652" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                        <Sequence.Variables>
-                          <Variable x:TypeArguments="x:String" Name="firstName" />
-                          <Variable x:TypeArguments="x:String" Name="surName" />
-                          <Variable x:TypeArguments="x:String" Name="emailAdress" />
-                          <Variable x:TypeArguments="x:String" Name="name" />
-                        </Sequence.Variables>
+                      <Sequence sap:VirtualizedContainerService.HintSize="418,1915" sap2010:WorkflowViewState.IdRef="Sequence_6">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Firstname" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetRowItem_1" Row="[row]">
-                          <ui:GetRowItem.Value>
-                            <OutArgument x:TypeArguments="x:String">[firstName]</OutArgument>
-                          </ui:GetRowItem.Value>
-                        </ui:GetRowItem>
-                        <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Surname" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetRowItem_2" Row="[row]">
-                          <ui:GetRowItem.Value>
-                            <OutArgument x:TypeArguments="x:String">[surName]</OutArgument>
-                          </ui:GetRowItem.Value>
-                        </ui:GetRowItem>
-                        <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="EmailAdress" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetRowItem_3" Row="[row]">
-                          <ui:GetRowItem.Value>
-                            <OutArgument x:TypeArguments="x:String">[emailAdress]</OutArgument>
-                          </ui:GetRowItem.Value>
-                        </ui:GetRowItem>
-                        <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_4">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:String">[name]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[firstName + " " + surName]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                        <ui:Replace DisplayName="Replace ç" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_1" Input="[name]" IsBuilderTabModified="False" Pattern="ç" RegexOption="Compiled" Replacement="c" Result="[name]" />
-                        <ui:Replace DisplayName="Replace Ç" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_3" Input="[name]" IsBuilderTabModified="False" Pattern="Ç" RegexOption="Compiled" Replacement="C" Result="[name]" />
-                        <ui:Replace DisplayName="Replace ğ" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_6" Input="[name]" IsBuilderTabModified="False" Pattern="ğ" RegexOption="IgnoreCase, Compiled" Replacement="g" Result="[name]" />
-                        <ui:Replace DisplayName="Replace ı" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_7" Input="[name]" IsBuilderTabModified="False" Pattern="ı" RegexOption="Compiled" Replacement="i" Result="[name]" />
-                        <ui:Replace DisplayName="Replace İ" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_4" Input="[name]" IsBuilderTabModified="False" Pattern="İ" RegexOption="Compiled" Replacement="I" Result="[name]" />
-                        <ui:Replace DisplayName="Replace ö" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_5" Input="[name]" IsBuilderTabModified="False" Pattern="ö" RegexOption="Compiled" Replacement="o" Result="[name]" />
-                        <ui:Replace DisplayName="Replace Ö" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_2" Input="[name]" IsBuilderTabModified="False" Pattern="Ö" RegexOption="Compiled" Replacement="O" Result="[name]" />
-                        <ui:Replace DisplayName="Replace ş" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_8" Input="[name]" IsBuilderTabModified="False" Pattern="ş" RegexOption="Compiled" Replacement="s" Result="[name]" />
-                        <ui:Replace DisplayName="Replace Ş" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_9" Input="[name]" IsBuilderTabModified="False" Pattern="Ş" RegexOption="Compiled" Replacement="S" Result="[name]" />
-                        <ui:Replace DisplayName="Replace ü" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_10" Input="[name]" IsBuilderTabModified="False" Pattern="ü" RegexOption="Compiled" Replacement="u" Result="[name]" />
-                        <ui:Replace DisplayName="Replace Ü" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_11" Input="[name]" IsBuilderTabModified="False" Pattern="Ü" RegexOption="Compiled" Replacement="U" Result="[name]" />
-                        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[name]" />
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,1823" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:String" Name="firstName" />
+                            <Variable x:TypeArguments="x:String" Name="surName" />
+                            <Variable x:TypeArguments="x:String" Name="emailAdress" />
+                            <Variable x:TypeArguments="x:String" Name="name" />
+                            <Variable x:TypeArguments="x:String" Name="LoS" />
+                            <Variable x:TypeArguments="x:String" Name="displayRole" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Firstname" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetRowItem_1" Row="[row]">
+                            <ui:GetRowItem.Value>
+                              <OutArgument x:TypeArguments="x:String">[firstName]</OutArgument>
+                            </ui:GetRowItem.Value>
+                          </ui:GetRowItem>
+                          <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Surname" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetRowItem_2" Row="[row]">
+                            <ui:GetRowItem.Value>
+                              <OutArgument x:TypeArguments="x:String">[surName]</OutArgument>
+                            </ui:GetRowItem.Value>
+                          </ui:GetRowItem>
+                          <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="EmailAdress" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetRowItem_3" Row="[row]">
+                            <ui:GetRowItem.Value>
+                              <OutArgument x:TypeArguments="x:String">[emailAdress]</OutArgument>
+                            </ui:GetRowItem.Value>
+                          </ui:GetRowItem>
+                          <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="LoS" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetRowItem_4" Row="[row]">
+                            <ui:GetRowItem.Value>
+                              <OutArgument x:TypeArguments="x:String">[LoS]</OutArgument>
+                            </ui:GetRowItem.Value>
+                          </ui:GetRowItem>
+                          <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="DisplayRole" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="334,64" sap2010:WorkflowViewState.IdRef="GetRowItem_5" Row="[row]">
+                            <ui:GetRowItem.Value>
+                              <OutArgument x:TypeArguments="x:String">[displayRole]</OutArgument>
+                            </ui:GetRowItem.Value>
+                          </ui:GetRowItem>
+                          <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[name]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[firstName + " " + surName]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:Replace DisplayName="Replace ç" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_1" Input="[name]" IsBuilderTabModified="False" Pattern="ç" RegexOption="Compiled" Replacement="c" Result="[name]" />
+                          <ui:Replace DisplayName="Replace Ç" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_3" Input="[name]" IsBuilderTabModified="False" Pattern="Ç" RegexOption="Compiled" Replacement="C" Result="[name]" />
+                          <ui:Replace DisplayName="Replace ğ" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_6" Input="[name]" IsBuilderTabModified="False" Pattern="ğ" RegexOption="IgnoreCase, Compiled" Replacement="g" Result="[name]" />
+                          <ui:Replace DisplayName="Replace ı" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_7" Input="[name]" IsBuilderTabModified="False" Pattern="ı" RegexOption="Compiled" Replacement="i" Result="[name]" />
+                          <ui:Replace DisplayName="Replace İ" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_4" Input="[name]" IsBuilderTabModified="False" Pattern="İ" RegexOption="Compiled" Replacement="I" Result="[name]" />
+                          <ui:Replace DisplayName="Replace ö" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_5" Input="[name]" IsBuilderTabModified="False" Pattern="ö" RegexOption="Compiled" Replacement="o" Result="[name]" />
+                          <ui:Replace DisplayName="Replace Ö" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_2" Input="[name]" IsBuilderTabModified="False" Pattern="Ö" RegexOption="Compiled" Replacement="O" Result="[name]" />
+                          <ui:Replace DisplayName="Replace ş" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_8" Input="[name]" IsBuilderTabModified="False" Pattern="ş" RegexOption="Compiled" Replacement="s" Result="[name]" />
+                          <ui:Replace DisplayName="Replace Ş" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_9" Input="[name]" IsBuilderTabModified="False" Pattern="Ş" RegexOption="Compiled" Replacement="S" Result="[name]" />
+                          <ui:Replace DisplayName="Replace ü" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_10" Input="[name]" IsBuilderTabModified="False" Pattern="ü" RegexOption="Compiled" Replacement="u" Result="[name]" />
+                          <ui:Replace DisplayName="Replace Ü" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Replace_11" Input="[name]" IsBuilderTabModified="False" Pattern="Ü" RegexOption="Compiled" Replacement="U" Result="[name]" />
+                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ name, emailAdress, displayRole, LoS }]" DataTable="[buildedDT]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                        </Sequence>
                       </Sequence>
                     </ActivityAction>
                   </ui:ForEachRow.Body>
                 </ui:ForEachRow>
+                <ui:WriteRange AddHeaders="True" DataTable="[buildedDT]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="468,115" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Mails" StartingCell="A1" WorkbookPath="Mails.xlsx" />
               </Sequence>
             </FlowStep>
           </FlowStep.Next>
